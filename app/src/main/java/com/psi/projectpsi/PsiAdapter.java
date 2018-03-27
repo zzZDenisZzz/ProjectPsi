@@ -27,9 +27,7 @@ public class PsiAdapter extends RecyclerView.Adapter<PsiAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         PsiModel post = posts.get(position);
-        holder.post1.setText(post.getFirst());
-        holder.post2.setText(post.getSecond());
-        holder.post3.setText(post.getThird());
+        holder.post1.setText(post.getName());
     }
 
     @Override
@@ -41,14 +39,10 @@ public class PsiAdapter extends RecyclerView.Adapter<PsiAdapter.ViewHolder> {
 
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView post1;
-        TextView post2;
-        TextView post3;
 
         public ViewHolder(View itemView) {
             super(itemView);
             post1 = (TextView) itemView.findViewById(R.id.post_one);
-            post2 = (TextView) itemView.findViewById(R.id.post_two);
-            post3 = (TextView) itemView.findViewById(R.id.post_three);
         }
     }
 }
