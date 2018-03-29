@@ -1,12 +1,15 @@
 package com.psi.projectpsi;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.psi.projectpsi.model.PsiModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -27,7 +30,14 @@ public class PsiAdapter extends RecyclerView.Adapter<PsiAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         PsiModel post = posts.get(position);
-        holder.post1.setText(post.getName());
+        holder.pageName.setText(post.getPageName());
+        holder.name.setText(post.getName());
+        holder.text.setText(post.getText());
+
+        Picasso.get()
+                .load(post.getImage())
+                .resize(700,360)
+                .into(holder.image);
     }
 
     @Override
@@ -38,11 +48,16 @@ public class PsiAdapter extends RecyclerView.Adapter<PsiAdapter.ViewHolder> {
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        TextView post1;
+        TextView name,text,pageName;
+        ImageView image;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            post1 = (TextView) itemView.findViewById(R.id.post_one);
+            pageName = (TextView) itemView.findViewById(R.id.page_name);
+            name = (TextView) itemView.findViewById(R.id.name);
+            text = (TextView) itemView.findViewById(R.id.text);
+
+            image = (ImageView) itemView.findViewById(R.id.image);
         }
     }
 }
