@@ -60,4 +60,12 @@ public class PsiAdapter extends RecyclerView.Adapter<PsiAdapter.ViewHolder> {
             image = (ImageView) itemView.findViewById(R.id.image);
         }
     }
+
+//    class RecyclerViewListener implements RecyclerView.OnClickListener{
+//
+//        @Override
+//        public void onClick(View view) {
+//
+//        }
+//    }
 }

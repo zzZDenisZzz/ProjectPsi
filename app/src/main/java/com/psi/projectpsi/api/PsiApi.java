@@ -7,9 +7,10 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 public interface PsiApi {
-
     @GET("content_share/android_app.php")
-    Call <List<PsiModel>> getData();
+    Call <List<PsiModel>> getData(@Query("func") String func);
+
 }

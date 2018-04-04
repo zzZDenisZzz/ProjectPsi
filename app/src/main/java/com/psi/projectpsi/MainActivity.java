@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
 
-        psiApi.getData().enqueue(new Callback<List<PsiModel>>() {
+        psiApi.getData("getServicesList").enqueue(new Callback<List<PsiModel>>() {
             @Override
             public void onResponse(Call<List<PsiModel>> call, Response<List<PsiModel>> response) {
                 posts.addAll(response.body());
