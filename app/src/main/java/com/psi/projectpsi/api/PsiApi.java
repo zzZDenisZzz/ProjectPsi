@@ -13,4 +13,7 @@ public interface PsiApi {
     @GET("content_share/android_app.php")
     Call <List<PsiModel>> getData(@Query("func") String func);
 
+    @GET("content_share/android_app.php")
+    Call <List<PsiModel>> getData(@Query("func") String func, @Query("route_id") Integer id);
+
 }

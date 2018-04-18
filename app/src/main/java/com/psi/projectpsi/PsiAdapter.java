@@ -1,6 +1,7 @@
 package com.psi.projectpsi;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,9 +17,11 @@ import java.util.List;
 public class PsiAdapter extends RecyclerView.Adapter<PsiAdapter.ViewHolder> {
 
     private List<PsiModel> posts;
+    Context context;
 
-    public PsiAdapter(List<PsiModel> posts) {
+    public PsiAdapter(List<PsiModel> posts,Context context) {
         this.posts = posts;
+        this.context = context;
     }
 
     @Override
@@ -28,7 +31,7 @@ public class PsiAdapter extends RecyclerView.Adapter<PsiAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         PsiModel post = posts.get(position);
         holder.pageName.setText(post.getPageName());
         holder.name.setText(post.getName());
@@ -38,6 +41,15 @@ public class PsiAdapter extends RecyclerView.Adapter<PsiAdapter.ViewHolder> {
                 .load(post.getImage())
                 .resize(700,360)
                 .into(holder.image);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, ServiceActivity.class);
+                intent.putExtra("position",getItemId(position));
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

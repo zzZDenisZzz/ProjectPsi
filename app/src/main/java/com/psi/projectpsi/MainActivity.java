@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        PsiAdapter adapter = new PsiAdapter(posts);
+        PsiAdapter adapter = new PsiAdapter(posts,this);
         recyclerView.setAdapter(adapter);
 
 
